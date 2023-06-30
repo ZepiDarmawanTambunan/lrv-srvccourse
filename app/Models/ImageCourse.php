@@ -9,7 +9,7 @@ class ImageCourse extends Model
 {
     use HasFactory;
 
-    protected $table = 'image_course';
+    protected $table = 'image_courses';
 
     protected $fillable = [
         'course_id', 'image'

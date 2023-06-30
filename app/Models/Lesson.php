@@ -17,6 +17,6 @@ class Lesson extends Model
     ];
 
     protected $fillable = [
-        'name', 'video', 'chapters_id'
+        'name', 'video', 'chapter_id'
     ];
 }

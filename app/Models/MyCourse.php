@@ -12,7 +12,7 @@ class MyCourse extends Model
     protected $table = 'my_courses';
 
     protected $fillable = [
-        'errors_id', 'user_id'
+        'course_id', 'user_id'
     ];
 
     protected $casts = [

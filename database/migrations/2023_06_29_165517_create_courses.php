@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('certificate');
             $table->string('thumbnail')->nullable();
             $table->enum('type', ['free', 'premium']);
+            $table->enum('status', ['draft', 'published']);
             $table->integer('price')->unsigned()->default(0);
             $table->enum('level', ['all-level', 'beginner', 'intermediate', 'advance']);
             $table->longText('description')->nullable();
