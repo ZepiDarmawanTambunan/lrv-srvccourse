@@ -114,13 +114,31 @@ class MyCourseController extends Controller
 
     public function createPremiumAccess(Request $request)
     {
-        $data = $request->all();
-        $myCourse = MyCourse::create($data);
+        try {
+            $data = $request->all();
+            $isExistMyCourse = MyCourse::where('course_id', '=', $request->course_id)
+            ->where('user_id', '=', $request->user_id)
+            ->exists();
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $myCourse
-        ]);
+            if($isExistMyCourse){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'user already take this course'
+                ], 409);
+            }
+
+            $myCourse = MyCourse::create($data);
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $myCourse
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage(),
+            ], 409);
+        }
     }
 
     /**
