@@ -31,5 +31,6 @@ Route::resource('chapters', ChapterController::class);
 Route::resource('lessons', LessonController::class);
 Route::resource('image-courses', ImageCourseController::class);
 Route::resource('my-courses', MyCourseController::class);
+// digunakan di lrv_srvc_payment setelah membayar
 Route::post('my-courses/premium', [MyCourseController::class, 'createPremiumAccess']);
 Route::resource('reviews', ReviewController::class);

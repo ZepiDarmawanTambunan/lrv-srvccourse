@@ -66,9 +66,8 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Lesson $lesson)
     {
-        $lesson = Lesson::find($id);
         if(!$lesson){
             return response()->json([
                 'status'=> 'error',
@@ -133,9 +132,8 @@ class LessonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Lesson $lesson)
     {
-        $lesson = Lesson::find($id);
         if(!$lesson){
             return response()->json([
                 'status' => 'error',

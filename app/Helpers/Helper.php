@@ -47,6 +47,7 @@ function getUserByIds($userIds = []){
     }
 }
 
+// membuat order & link pembayaran
 function postOrder($params) {
     $url = env('SERVICE_ORDER_PAYMENT_URL').'api/orders';
     try {

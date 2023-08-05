@@ -47,7 +47,7 @@ class CourseController extends Controller
             'thumbnail' => 'string|url',
             'type' => 'required|in:free,premium',
             'status' => 'required|in:draft,published',
-            'price' => 'integer',
+            'price' => 'integer|min:3000|max:90000000',
             'level' => 'required|in:all-level,beginner,intermediate,advance',
             'mentor_id' => 'required|integer',
             // 'mentor_id' => 'required|integer|exists:mentors,id',
@@ -137,7 +137,7 @@ class CourseController extends Controller
             'thumbnail' => 'string|url',
             'type' => 'in:free,premium',
             'status' => 'in:draft,published',
-            'price' => 'integer',
+            'price' => 'integer|min:3000|max:90000000',
             'level' => 'in:all-level,beginner,intermediate,advance',
             'mentor_id' => 'integer',
             'description' => 'string'
@@ -185,10 +185,8 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Course $course)
     {
-        $course = Course::find($id);
-
         if(!$course){
             return response()->json([
                 'status' => 'error',

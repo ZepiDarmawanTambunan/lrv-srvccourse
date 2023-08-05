@@ -67,9 +67,8 @@ class ChapterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Chapter $chapter)
     {
-        $chapter = Chapter::find($id);
         if(!$chapter){
             return response()->json([
                 'status' => 'error',
@@ -123,9 +122,8 @@ class ChapterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Chapter $chapter)
     {
-        $chapter = Chapter::find($id);
         if (!$chapter) {
             return response()->json([
                 'status' => 'error',

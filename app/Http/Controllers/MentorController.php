@@ -52,10 +52,9 @@ class MentorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Mentor $mentor)
     {
-        $mentors = Mentor::find($id);
-        if(!$mentors){
+        if(!$mentor){
             return response()->json([
                 'status' => 'error',
                 'message' => 'mentor not found'
@@ -64,7 +63,7 @@ class MentorController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $mentors
+            'data' => $mentor
         ]);
 
     }
@@ -112,9 +111,8 @@ class MentorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Mentor $mentor)
     {
-        $mentor = Mentor::find($id);
         if(!$mentor){
             return response()->json([
                 'status' => 'error',
